@@ -15,7 +15,8 @@
 <% if @book.comments.any? %>
     <% @book.comments.each do |comment| %>
     <div>
-        <%= comment.content %>
+      <p><strong><%= comment.user.name if comment.user %></strong></p>
+      <%= comment.content %>
     </div>
     <% end %>
 <% else %>
