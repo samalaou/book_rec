@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_14_151235) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_14_160711) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -62,7 +62,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_151235) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["book_id"], name: "index_comments_on_book_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -85,5 +87,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_151235) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "books"
+  add_foreign_key "comments", "users"
   add_foreign_key "sessions", "users"
 end
