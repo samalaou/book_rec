@@ -10,3 +10,23 @@
     <%= link_to "Edit", edit_book_path(@book) %>
     <%= button_to "Delete", @book, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
 <% end %>
+
+<h2>Comments</h2>
+<% if @book.comments.any? %>
+    <% @book.comments.each do |comment| %>
+    <div>
+        <%= comment.content %>
+    </div>
+    <% end %>
+<% else %>
+  <p>No comments yet.</p>
+<% end %>
+
+<h3>Add a Comment</h3>
+<%= form_with(model: [@book, @book.comments.build], local: true) do |form| %>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit "Post Comment" %>
+<% end %>
