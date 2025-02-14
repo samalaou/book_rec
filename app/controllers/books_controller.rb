@@ -36,14 +36,14 @@ class BooksController < ApplicationController
     def destroy
         @book.destroy
         redirect_to books_path
-    end    
+    end
 
     private
         def set_book
             @book = Book.find(params[:id])
         end
-  
+
         def book_params
-          params.expect(book: [ :title, :author, :description ])
+          params.expect(book: [ :title, :author, :description, :featured_image ])
         end
 end

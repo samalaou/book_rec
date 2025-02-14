@@ -2,6 +2,7 @@
 
 <p><strong>Author:</strong> <%= @book.author %></p>
 <p><strong>Description:</strong> <%= @book.description %></p>
+<%= image_tag @book.featured_image if @book.featured_image.attached? %>
 
 <%= link_to "Back", books_path %>
 

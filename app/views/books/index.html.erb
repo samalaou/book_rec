@@ -5,7 +5,14 @@
 <div id="books">
   <% @books.each do |book| %>
     <div>
-      <%= link_to book.title, book %>
+      <% if book.featured_image.attached? %>
+        <%= link_to book_path(book) do %>
+          <%= image_tag book.featured_image, alt: book.title, width: 150, height: 200 %>
+        <% end %>
+      <% end %>
+
+      <br>
+      <%= link_to book.title, book_path(book) %>
     </div>
   <% end %>
 </div>
