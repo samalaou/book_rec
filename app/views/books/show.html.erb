@@ -1,41 +1,44 @@
-<%= link_to "Back", books_path %>
-<h1><%= @book.title %></h1>
-<section class="book">
 
-  
+<div class="page-header">
+  <h1><%= @book.title %></h1>
+  <%= link_to "Back", books_path, class: "btn btn-back" %>
+</div>
 
-  <section class="book-info">
+<section class="book-info">
   <p><strong>Author:</strong> <%= @book.author %></p>
   <p><strong>Description:</strong> <%= @book.description %></p>
-  <%= image_tag @book.display_image, alt: @book.title %>
-
-
+  <%= image_tag @book.display_image, alt: @book.title, class: "book-image" %>
 
   <% if authenticated? %>
-      <%= link_to "Edit", edit_book_path(@book) %>
-      <%= button_to "Delete", @book, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <div class="book-actions">
+      <%= link_to "Edit", edit_book_path(@book), class: "btn btn-edit" %>
+      <%= button_to "Delete", @book, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+    </div>
   <% end %>
-
-  </section>
 </section>
 
-<h2>Comments</h2>
-<% if @book.comments.any? %>
-    <% @book.comments.each do |comment| %>
-    <div>
-      <p><strong><%= comment.user.name if comment.user %></strong></p>
-      <%= comment.content %>
-    </div>
-    <% end %>
-<% else %>
-  <p>No comments yet.</p>
-<% end %>
+<section class="comments-section">
+  <h2>Comments</h2>
 
-<h3>Add a Comment</h3>
-<%= form_with(model: [@book, @book.comments.build], local: true) do |form| %>
-  <div>
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <%= form.submit "Post Comment" %>
-<% end %>
+  <% if @book.comments.any? %>
+    <div class="comments">
+      <% @book.comments.each do |comment| %>
+        <div class="comment">
+          <p><strong><%= comment.user.name if comment.user %></strong></p>
+          <p><%= comment.content %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="no-comments">No comments yet.</p>
+  <% end %>
+
+  <h3>Add a Comment</h3>
+
+  <%= form_with(model: [@book, @book.comments.build], local: true, class: "comment-form") do |form| %>
+    <div class="form-group">
+      <%= form.text_area :content, class: "form-input" %>
+    </div>
+    <%= form.submit "Post Comment", class: "form-submit" %>
+  <% end %>
+</section>
