@@ -1,15 +1,23 @@
-<h1><%= @book.title %></h1>
-
-<p><strong>Author:</strong> <%= @book.author %></p>
-<p><strong>Description:</strong> <%= @book.description %></p>
-<%= image_tag @book.display_image, alt: @book.title %>
-
 <%= link_to "Back", books_path %>
+<h1><%= @book.title %></h1>
+<section class="book">
 
-<% if authenticated? %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= button_to "Delete", @book, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-<% end %>
+  
+
+  <section class="book-info">
+  <p><strong>Author:</strong> <%= @book.author %></p>
+  <p><strong>Description:</strong> <%= @book.description %></p>
+  <%= image_tag @book.display_image, alt: @book.title %>
+
+
+
+  <% if authenticated? %>
+      <%= link_to "Edit", edit_book_path(@book) %>
+      <%= button_to "Delete", @book, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  <% end %>
+
+  </section>
+</section>
 
 <h2>Comments</h2>
 <% if @book.comments.any? %>
