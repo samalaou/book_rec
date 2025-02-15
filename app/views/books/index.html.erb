@@ -1,15 +1,14 @@
-<h1>Books</h1>
+<div class="books-header">
+  <h1>Books</h1>
+  <%= link_to "New Book", new_book_path, class: "btn" if authenticated? %>
+</div>
 
-<%= link_to "New book", new_book_path if authenticated? %>
-
-<div id="books">
+<div class="books">
   <% @books.each do |book| %>
     <%= link_to book_path(book), class: "book-card" do %> 
-      <div>
+        <h2><%= book.title %></h2>
         <%= image_tag book.display_image, alt: book.title, width: 150, height: 200 %>
         <br>
-        <span><%= book.title %></span>
-      </div>
     <% end %>
   <% end %>
 </div>
