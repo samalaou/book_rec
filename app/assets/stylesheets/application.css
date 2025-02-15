@@ -81,3 +81,44 @@ main {
     margin: 0.5rem 0;
     color: #333;
 }
+
+/* Book Form Styling */
+.book-form-container {
+    max-width: 600px;
+    width: 90%;
+    margin: 2rem auto;
+}
+
+.book-form {
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-weight: bold;
+    display: block;
+}
+
+.form-input, .form-textarea, .form-file {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-submit {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
