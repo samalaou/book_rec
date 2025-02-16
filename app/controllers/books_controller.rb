@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     end
 
     def show
+        @rating = @book.ratings.find_by(user: Current.user)
     end
 
     def new

@@ -8,6 +8,13 @@
   <p><strong>Author:</strong> <%= @book.author %></p>
   <p><strong>Description:</strong> <%= @book.description %></p>
   <%= image_tag @book.display_image, alt: @book.title, class: "book-image" %>
+  <h3>Average Rating:</h3>
+  <div class="star-rating">
+    <% (1..5).reverse_each do |star| %>
+      <span class="star"><%= star <= @book.average_rating.round ? "★" : "☆" %></span>
+    <% end %>
+  </div>
+
 
   <% if authenticated? %>
     <div class="book-actions">
@@ -34,6 +41,18 @@
   <% end %>
 
   <% if authenticated? %>
+
+    <h3>Rate this Book:</h3>
+    <%= form_with url: book_ratings_path(@book), method: :post, local: true, class: "rating-form" do |form| %>
+      <div class="star-rating">
+        <% (1..5).reverse_each do |star| %>
+          <%= radio_button_tag :rating, star, (params[:rating] || @rating&.rating).to_i == star, id: "rating_#{star}", class: "hidden-radio" %>
+          <%= label_tag "rating_#{star}", "★" %>
+        <% end %>
+      </div>
+      <%= form.submit "Submit Rating", class: "form-submit" %>
+    <% end %>
+
     <h3>Add a Comment</h3>
 
     <%= form_with(model: [@book, @book.comments.build], local: true, class: "comment-form") do |form| %>
@@ -42,5 +61,6 @@
       </div>
       <%= form.submit "Post Comment", class: "form-submit" %>
     <% end %>
+
   <% end %>
 </section>
