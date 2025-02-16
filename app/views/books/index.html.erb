@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Books</h1>
+  <h1>Recommended Books</h1>
   <%= link_to "New Book", new_book_path, class: "btn" if authenticated? %>
 </div>
 
@@ -7,9 +7,10 @@
 <div class="books">
   <% @books.each do |book| %>
     <%= link_to book_path(book), class: "book-card" do %> 
-        <h2><%= book.title %></h2>
-        <%= image_tag book.display_image, alt: book.title, width: 150, height: 200 %>
-        <br>
+      <h2><%= book.title %></h2>
+      <%= image_tag book.display_image, alt: book.title, width: 150, height: 200 %>
+      <p>Recommended by: <%= book.user.name if book.user %></p> 
+      <br>
     <% end %>
   <% end %>
 </div>
