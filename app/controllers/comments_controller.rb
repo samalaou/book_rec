@@ -5,11 +5,7 @@ class CommentsController < ApplicationController
     @comment = @book.comments.build(comment_params)
     @comment.user = Current.user
 
-    if @comment.save
-      redirect_to @book
-    else
-      redirect_to @book, alert: "Comment cannot be empty."
-    end
+    redirect_with_notice(@comment.save, @book, "Comment added!", "Comment cannot be empty.")
   end
 
   private
