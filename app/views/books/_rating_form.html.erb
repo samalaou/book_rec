@@ -1,13 +1,13 @@
-
 <% if authenticated? %>
-    <h3>Rate this Book:</h3>
     <%= form_with url: book_ratings_path(book), method: :post, local: true, class: "rating-form" do |form| %>
-    <div class="star-rating">
-        <% (1..5).reverse_each do |star| %>
-        <%= radio_button_tag :rating, star, (params[:rating] || @rating&.rating).to_i == star, id: "rating_#{star}", class: "hidden-radio" %>
-        <%= label_tag "rating_#{star}", "★" %>
-        <% end %>
+    <div class="rating-container">
+        <div class="star-rating">
+            <% (1..5).reverse_each do |star| %>
+            <%= radio_button_tag :rating, star, (params[:rating] || @rating&.rating).to_i == star, id: "rating_#{star}", class: "hidden-radio" %>
+            <%= label_tag "rating_#{star}", "★" %>
+            <% end %>
+        </div>
+        <%= form.submit "Submit Rating", class: "btn" %>
     </div>
-    <%= form.submit "Submit Rating", class: "btn" %>
     <% end %>
 <% end %>
