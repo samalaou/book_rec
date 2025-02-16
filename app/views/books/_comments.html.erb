@@ -11,7 +11,7 @@
       <% end %>
     </div>
   <% else %>
-    <p class="no-comments">No comments yet.</p>
+    <p class="comment">No comments yet.</p>
   <% end %>
 
   <% if authenticated? %>
@@ -23,15 +23,15 @@
           <%= label_tag "rating_#{star}", "★" %>
         <% end %>
       </div>
-      <%= form.submit "Submit Rating", class: "form-submit" %>
+      <%= form.submit "Submit Rating", class: "btn" %>
     <% end %>
 
     <h3>Add a Comment</h3>
     <%= form_with(model: [book, book.comments.build], local: true, class: "comment-form") do |form| %>
       <div class="form-group">
-        <%= form.text_area :content, class: "form-input" %>
+        <%= form.text_area :content, class: "form-text" %>
       </div>
-      <%= form.submit "Post Comment", class: "form-submit" %>
+      <%= form.submit "Post Comment", class: "btn" %>
     <% end %>
   <% end %>
 </section>
