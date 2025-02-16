@@ -1,9 +1,21 @@
 <nav>
-  <%= link_to "Home", root_path, class: "nav-link" %>
-  <% unless authenticated? %>
-    <%= link_to "Log in", new_session_path, class: "nav-link" %>
-    <%= link_to "Sign up", new_registration_path, class: "nav-link" %>
-  <% else %>
-    <%= button_to "Log out", session_path, method: :delete, class: "btn " %>
-  <% end %>
+  <div class="nav-left">
+    <%= link_to "Home", root_path, class: "nav-link" %>
+  </div>
+
+  <div class="nav-right">
+    <%= form_with url: set_theme_path, method: :get, local: true, class: "theme-form" do %>
+      <%= select_tag :theme, 
+        options_for_select([['Light', 'light'], ['Dark', 'dark'], ['System Default', '']], cookies[:theme]), 
+        onchange: 'this.form.submit();' 
+      %>
+    <% end %>
+
+    <% unless authenticated? %>
+      <%= link_to "Log in", new_session_path, class: "nav-link" %>
+      <%= link_to "Sign up", new_registration_path, class: "nav-link" %>
+    <% else %>
+      <%= button_to "Log out", session_path, method: :delete, class: "btn" %>
+    <% end %>
+  </div>
 </nav>
