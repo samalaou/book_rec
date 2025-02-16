@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  include SetBookConcern
+
   def create
-    @book = Book.find(params[:book_id])
     @comment = @book.comments.build(comment_params)
     @comment.user = Current.user
 

@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
+    include SetBookConcern
     allow_unauthenticated_access only: %i[ index show ]
-    before_action :set_book, only: %i[ show edit update ]
 
     def index
         @books = Book.all
@@ -40,10 +40,6 @@ class BooksController < ApplicationController
     end
 
     private
-        def set_book
-            @book = Book.find(params[:id])
-        end
-
         def book_params
           params.expect(book: [ :title, :author, :description, :featured_image ])
         end
