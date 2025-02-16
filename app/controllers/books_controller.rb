@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     end
 
     def create
-        @book = Book.new(book_params)
+        @book = Current.user.books.new(book_params)
         redirect_with_notice(@book.save, @book, "Book created successfully!", "Failed to create book.")
     end
 
