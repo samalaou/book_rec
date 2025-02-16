@@ -1,8 +1,7 @@
 <section class="comments-section">
   <h2>Comments</h2>
-
   <% if book.comments.any? %>
-    <div class="comments">
+    <div class="all-comments">
       <% book.comments.each do |comment| %>
         <div class="comment">
           <p><strong><%= comment.user.name if comment.user %></strong></p>
@@ -15,11 +14,8 @@
   <% end %>
 
   <% if authenticated? %>
-    <h3>Add a Comment</h3>
-    <%= form_with(model: [book, book.comments.build], local: true, class: "comment-form") do |form| %>
-      <div class="form-group">
-        <%= form.text_area :content, class: "form-text" %>
-      </div>
+    <%= form_with(model: [book, book.comments.build], local: true, class: "comment-input") do |form| %>
+      <%= form.text_area :content %>
       <%= form.submit "Post Comment", class: "btn" %>
     <% end %>
   <% end %>

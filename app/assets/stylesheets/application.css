@@ -263,7 +263,11 @@ main {
 } 
 
 /* Comments Section */
-.comments {
+.comments-section {
+    margin-top: 1rem;
+}
+
+.all-comments {
     margin-top: 1rem;
     padding: 1rem;
     background: var(--comment-bg);
@@ -282,6 +286,18 @@ main {
 .no-comments {
     text-align: center;
     color: var(--text-color);
+}
+
+.comment-input {
+    margin-top: 1rem;
+}
+
+.comment-input textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
 }
 
 /* Star Rating */
