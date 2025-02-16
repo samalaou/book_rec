@@ -1,26 +1,27 @@
 <div class="page-header">
-  <h1><%= book.title %></h1>
-  <%= link_to "Back", books_path, class: "btn btn-back" %>
+    <h1><%= book.title %></h1>
+    <%= link_to "Back", books_path, class: "btn btn-back" %>
 </div>
 
 <section class="book-info">
-  <p><strong>Author:</strong> <%= book.author %></p>
-  <p><strong>Description:</strong> <%= book.description %></p>
-  <p><strong>Recommended by:</strong> <%= book.user.name if book.user %></p>
+    <p><strong>Author:</strong> <%= book.author %></p>
+    <p><strong>Description:</strong> <%= book.description %></p>
+    <p><strong>Recommended by:</strong> <%= book.user.name if book.user %></p>
 
-  <%= image_tag book.display_image, alt: book.title, class: "book-image" %>
+    <%= image_tag book.display_image, alt: book.title, class: "book-image" %>
 
-  <h3>Average Rating:</h3>
-  <div class="star-rating">
-    <% (1..5).reverse_each do |star| %>
-      <span class="star"><%= star <= book.average_rating.round ? "★" : "☆" %></span>
-    <% end %>
-  </div>
-
-  <% if authenticated? %>
-    <div class="book-actions">
-      <%= link_to "Edit", edit_book_path(book), class: "btn btn-edit" %>
-      <%= button_to "Delete", book, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+    <h3>Average Rating:</h3>
+    <div class="star-rating">
+        <% (1..5).reverse_each do |star| %>
+        <span class="star"><%= star <= book.average_rating.round ? "★" : "☆" %></span>
+        <% end %>
     </div>
-  <% end %>
+
+    <% if authenticated? && Current.user == book.user %>
+        <div class="book-actions">
+            <%= link_to "Edit", edit_book_path(book), class: "btn btn-edit" %>
+            <%= button_to "Delete", book, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+        </div>
+    <% end %>
+
 </section>
