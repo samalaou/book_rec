@@ -23,7 +23,7 @@
 
         <div class="form-actions">
             <%= form.submit "Submit", class: "btn" %>
-            <%= link_to "Cancel", book.persisted? ? book : books_path, class: "cancel-link" %>
+            <%= link_to "Cancel", book.persisted? ? book : books_path, class: "btn" %>
         </div>
     <% end %>
 </div>
