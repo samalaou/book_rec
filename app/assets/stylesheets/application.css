@@ -113,6 +113,7 @@ nav a {
     color: var(--nav-text);
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -130,6 +131,16 @@ nav a:hover {
     gap: 1rem;
 }
 
+.theme-label {
+    color: var(--nav-text);
+    font-weight: bold;
+    margin-right: 0.5rem
+}
+
+.theme-select {
+    ba
+}
+  
 /* Main Content */
 main {
     max-width: 1024px;
@@ -336,10 +347,4 @@ main {
 .star-rating label:hover,
 .star-rating label:hover ~ label {
     color: gold;
-}
-
-.btn {
-    padding: 5px 10px;
-    font-size: 1rem;
-    cursor: pointer;
 }

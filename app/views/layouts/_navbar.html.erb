@@ -4,10 +4,12 @@
   </div>
 
   <div class="nav-right">
-    <%= form_with url: set_theme_path, method: :get, local: true, class: "theme-form" do %>
+    <%= form_with url: set_theme_path, method: :get, local: true do %>
+      <%= label_tag :theme, "Theme:", class: "theme-label" %>
       <%= select_tag :theme, 
-        options_for_select([['Light', 'light'], ['Dark', 'dark'], ['System Default', '']], cookies[:theme]), 
-        onchange: 'this.form.submit();' 
+        options_for_select([['Light', 'light'], ['Dark', 'dark'], ['Default', '']], cookies[:theme]),
+        class: "btn",
+        onchange: 'this.form.submit();'
       %>
     <% end %>
 
