@@ -4,10 +4,7 @@ class Book < ApplicationRecord
     validates :title, :author, presence: true
   
     def display_image
-        if featured_image.attached?
-          featured_image
-        else
-          "default_book.png"
-        end
-      end
+      featured_image.attached? ? featured_image : "default_book.png"
+    end
+
 end
