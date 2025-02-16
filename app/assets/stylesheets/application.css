@@ -223,11 +223,13 @@ main {
 }
 
 .book-image {
+    max-height: 300px;
     width: auto;
-    height: 100%;
+    object-fit: contain;
     border-radius: 8px;
     padding: 0.5rem;
 }
+
 
 .book-details {
     flex: 1;
