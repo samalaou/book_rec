@@ -6,17 +6,17 @@
 
 /* Theme Variables */
 :root {
-    --bg-color: rgb(171, 160, 242);
+    --bg-color: rgb(242, 242, 242);
     --text-color: #333;
-    --card-bg: rgb(46, 242, 131);
+    --card-bg: rgb(171, 160, 242);
     --nav-bg: #0D0D0D;
     --nav-text: #ecf0f1;
     --btn-bg: rgb(242, 203, 5);
     --btn-text: black;
     --input-bg: white;
     --input-border: #ccc;
-    --main-bg: rgb(242, 242, 242);
-    --comment-bg: rgb(220, 220, 220);
+    --main-bg: white;
+    --comment-bg: rgb(242, 242, 242);
     --shadow: rgba(0, 0, 0, 0.2);
 }
 
@@ -39,17 +39,17 @@
 
 /* a lot of repetitions, need to fix it later */
 body.light {
-    --bg-color: rgb(171, 160, 242);
+    --bg-color: rgb(242, 242, 242);
     --text-color: #333;
-    --card-bg: rgb(46, 242, 131);
+    --card-bg: rgb(171, 160, 242);
     --nav-bg: #0D0D0D;
     --nav-text: #ecf0f1;
     --btn-bg: rgb(242, 203, 5);
     --btn-text: black;
     --input-bg: white;
     --input-border: #ccc;
-    --main-bg: rgb(242, 242, 242);
-    --comment-bg: rgb(220, 220, 220);
+    --main-bg: white;
+    --comment-bg: rgb(242, 242, 242);
     --shadow: rgba(0, 0, 0, 0.2);
 }
 
