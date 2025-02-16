@@ -1,5 +1,9 @@
 <div class="form-container">
     <h1><%= title %></h1>
+
+    <%= tag.div(flash[:alert], class: "flash-alert") if flash[:alert] %>
+    <%= tag.div(flash[:notice], class: "flash-notice") if flash[:notice] %>
+
     <%= form_with model: book, html: { class: "book-form" } do |form| %>
         <div class="form-group">
             <%= form.label :title, class: "form-label" %>

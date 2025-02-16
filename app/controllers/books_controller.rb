@@ -17,7 +17,13 @@ class BooksController < ApplicationController
 
     def create
         @book = Current.user.books.new(book_params)
-        redirect_with_notice(@book.save, @book, "Book created successfully!", "Failed to create book.")
+        redirect_with_notice(
+            @book.save,
+            @book,
+            "Book created successfully!",
+            "Failed to create book.",
+            :new_book
+        )
     end
 
     def edit
@@ -25,12 +31,13 @@ class BooksController < ApplicationController
 
     def update
         redirect_with_notice(
-            @book.update(book_params),
-            @book,
-            "Book updated successfully!",
-            "Failed to update book."
+          @book.update(book_params),
+          @book,
+          "Book updated successfully!",
+          "Failed to update book.",
+          :edit_book
         )
-    end
+      end
 
     def destroy
         @book.destroy
