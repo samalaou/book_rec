@@ -1,6 +1,4 @@
 class RatingsController < ApplicationController
-  before_action :authenticated?
-
   def create
     @book = Book.find(params[:book_id])
     @rating = @book.ratings.find_or_initialize_by(user: Current.user)

@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :authenticated?
-
   def create
     @book = Book.find(params[:book_id])
     @comment = @book.comments.build(comment_params)
